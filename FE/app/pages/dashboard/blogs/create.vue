@@ -4,6 +4,7 @@ import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 import MDCRenderer from '@nuxtjs/mdc/runtime/components/MDCRenderer.vue'
 import { debounce } from 'perfect-debounce'
 import { useBlogStore } from '~/stores/blog'
+import {useHead} from "#app";
 definePageMeta({ layout: 'dashboard' })
 // Inisialisasi store
 const blogStore = useBlogStore()
@@ -228,6 +229,9 @@ const toggleActive = () => {
     alert('Blog has been unpublished because it was set to inactive')
   }
 }
+useHead(() => ({
+  title: `Blog Add – Dashboard`,
+}))
 </script>
 
 <template>

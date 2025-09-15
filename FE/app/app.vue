@@ -21,22 +21,20 @@ useHead({
     class: 'bg-white dark:bg-gray-900',
   },
   link: [
-    { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+    { rel: 'icon', href: '/logo.png', sizes: '48x48' },
     {
       rel: 'icon',
-      href: '/favicon.svg',
-      sizes: 'any',
-      type: 'image/svg+xml',
-    },
+      type: 'image/png',
+      href: '/logo.png'
+    }
   ],
 });
 
 useSeoMeta({
-  title: 'Chat GitHub',
-  ogTitle: 'Chat GitHub - Search GitHub in Plain English',
+  title: 'Ringga.dev - My Personal Website',
+  ogTitle: 'Ringga.dev - My Personal Website',
   description:
-      'Chat GitHub is an AI powered chat interface that lets you search GitHub in everyday language. No need to remember complex query syntax.',
-  ogImage: 'https://chat-github.nuxt.dev/home.png',
+      'My Web ',
   twitterCard: 'summary_large_image',
 });
 </script>

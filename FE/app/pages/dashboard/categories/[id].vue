@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import {useHead} from "#app";
+
 definePageMeta({ layout: 'dashboard' })
 
 const route = useRoute()
@@ -18,6 +20,9 @@ function save() {
   console.log('Saving product', product)
   navigateTo('/dashboard/products/list')
 }
+useHead(() => ({
+  title: `Blog Edit – Dashboard`,
+}))
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { AppModel } from '~/types/models/AppModel'
 import { useAppsStore } from '~/stores/apps'
+import {useHead} from "#app";
 
 definePageMeta({
   layout: 'dashboard'
@@ -70,6 +71,9 @@ async function remove(id: string) {
 
 
 }
+useHead(() => ({
+  title: `Apps – Dashboard`,
+}))
 </script>
 
 <template>

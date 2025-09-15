@@ -4,6 +4,7 @@ import { parseMarkdown } from '@nuxtjs/mdc/runtime'
 import MDCRenderer from '@nuxtjs/mdc/runtime/components/MDCRenderer.vue'
 import { debounce } from 'perfect-debounce'
 import { useBlogStore } from '~/stores/blog'
+import {useHead} from "#app";
 definePageMeta({ layout: 'dashboard' })
 /* ------------------------------ Types ------------------------------ */
 interface Category {
@@ -53,7 +54,7 @@ onMounted(async () => {
   loading.value = true
   try {
     // In a real app, you would fetch this from your API
-    const response: BaseResponse<any> | undefined = await blogStore.getBlogById(blogId as string)
+    const response = await blogStore.getBlogById(blogId as string)
     if (response && response.code === 200 && response.data) {
       const blogData = response.data
       // Sesuaikan dengan model yang benar
@@ -364,6 +365,9 @@ const toggleActive = () => {
     alert('Blog has been unpublished because it was set to inactive')
   }
 }
+useHead(() => ({
+  title: `Blog Edit – Dashboard`,
+}))
 </script>
 
 <template>

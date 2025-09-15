@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BlogModel } from "~/types/models/BlogModel"
 import { useBlogStore } from "~/stores/blog"
+import {useHead} from "#app";
 
 definePageMeta({ layout: 'dashboard' })
 
@@ -166,6 +167,10 @@ watch(pageSize, () => {
 onMounted(() => {
   loadBlogs()
 })
+
+useHead(() => ({
+  title: `Blog – Dashboard`,
+}))
 </script>
 
 <template>

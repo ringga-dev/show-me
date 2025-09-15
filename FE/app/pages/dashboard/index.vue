@@ -1,34 +1,34 @@
 <script setup lang="ts">
 import {CalendarDate} from '@internationalized/date';
+
 const toast = useToast()
-definePageMeta({ layout: 'dashboard' })
+definePageMeta({layout: 'dashboard'})
 
 /* ------------------ Dummy Data ------------------ */
 const stats = [
-  { label: 'Revenue', value: 12845, icon: 'i-heroicons-banknotes', goal: 20000 },
-  { label: 'Orders', value: 1324, icon: 'i-heroicons-shopping-cart', goal: 2000 },
-  { label: 'Users', value: 657, icon: 'i-heroicons-users', goal: 1000 },
-  { label: 'Page Views', value: 98123, icon: 'i-heroicons-eye', goal: 150000 }
+  {label: 'Revenue', value: 12845, icon: 'i-heroicons-banknotes', goal: 20000},
+  {label: 'Orders', value: 1324, icon: 'i-heroicons-shopping-cart', goal: 2000},
+  {label: 'Users', value: 657, icon: 'i-heroicons-users', goal: 1000},
+  {label: 'Page Views', value: 98123, icon: 'i-heroicons-eye', goal: 150000}
 ]
-
 
 
 const recentUsers = [
-  { id: 1, name: 'Alice', email: 'alice@mail.com', avatar: 'https://i.pravatar.cc/40?u=1' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com', avatar: 'https://i.pravatar.cc/40?u=2' },
-  { id: 3, name: 'Charlie', email: 'charlie@mail.com', avatar: 'https://i.pravatar.cc/40?u=3' }
+  {id: 1, name: 'Alice', email: 'alice@mail.com', avatar: 'https://i.pravatar.cc/40?u=1'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com', avatar: 'https://i.pravatar.cc/40?u=2'},
+  {id: 3, name: 'Charlie', email: 'charlie@mail.com', avatar: 'https://i.pravatar.cc/40?u=3'}
 ]
 
 const blogPosts = [
-  { id: 1, title: 'How to scale with Nuxt', views: 3245 },
-  { id: 2, title: 'Understanding SSR vs CSR', views: 1892 },
-  { id: 3, title: 'Top 10 VS Code Extensions', views: 4533 }
+  {id: 1, title: 'How to scale with Nuxt', views: 3245},
+  {id: 2, title: 'Understanding SSR vs CSR', views: 1892},
+  {id: 3, title: 'Top 10 VS Code Extensions', views: 4533}
 ]
 
 const apiTokens = [
-  { id: 1, name: 'Production', lastUsed: '2h ago', status: 'Active' },
-  { id: 2, name: 'Staging', lastUsed: '1d ago', status: 'Active' },
-  { id: 3, name: 'Legacy', lastUsed: '2w ago', status: 'Expired' }
+  {id: 1, name: 'Production', lastUsed: '2h ago', status: 'Active'},
+  {id: 2, name: 'Staging', lastUsed: '1d ago', status: 'Active'},
+  {id: 3, name: 'Legacy', lastUsed: '2w ago', status: 'Expired'}
 ]
 
 const value = ref([
@@ -48,14 +48,15 @@ const value = ref([
 </script>
 
 <template>
-  <div >
-
+  <div>
 
 
     <!-- Stat Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-      <UCard v-for="stat in stats" :key="stat.label"
-             class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border-slate-200/50 dark:border-slate-700/50">
+      <UCard
+          v-for="stat in stats"
+          :key="stat.label"
+          class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-xl border-slate-200/50 dark:border-slate-700/50">
         <div class="flex items-center justify-between">
           <div>
             <p class="text-sm text-slate-500 dark:text-slate-400">{{ stat.label }}</p>
@@ -67,8 +68,8 @@ const value = ref([
             <UIcon :name="stat.icon" class="w-6 h-6 text-gray-400 dark:text-white"/>
           </div>
         </div>
-        <UProgress v-model:="stat.value" :max="stat.goal" color="primary" class="mt-3" />
-        <p class="text-xs text-white mt-1">{{ Math.round((stat.value/stat.goal)*100) }}% of goal</p>
+        <UProgress v-model:="stat.value" :max="stat.goal" color="primary" class="mt-3"/>
+        <p class="text-xs text-white mt-1">{{ Math.round((stat.value / stat.goal) * 100) }}% of goal</p>
       </UCard>
     </div>
 
@@ -82,7 +83,7 @@ const value = ref([
           <template #header>
             <div class="flex justify-between items-center">
               <h3 class="font-semibold text-slate-800 dark:text-white">Recent Blog Posts</h3>
-              <UButton label="Write" icon="i-heroicons-pencil-square" size="xs" />
+              <UButton label="Write" icon="i-heroicons-pencil-square" size="xs"/>
             </div>
           </template>
           <ul class="space-y-3">
@@ -102,7 +103,7 @@ const value = ref([
           <template #header>
             <h3 class="font-semibold text-slate-800 dark:text-white">Calendar</h3>
           </template>
-          <UCalendar multiple :v-model="value" />
+          <UCalendar multiple :v-model="value"/>
         </UCard>
 
         <!-- Recent Users -->
@@ -112,7 +113,7 @@ const value = ref([
           </template>
           <ul class="space-y-3">
             <li v-for="u in recentUsers" :key="u.id" class="flex items-center gap-3">
-              <UAvatar :src="u.avatar" size="xs" />
+              <UAvatar :src="u.avatar" size="xs"/>
               <div>
                 <p class="text-sm font-medium text-slate-700 dark:text-slate-200">{{ u.name }}</p>
                 <p class="text-xs text-slate-500 dark:text-slate-400">{{ u.email }}</p>

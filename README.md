@@ -92,28 +92,6 @@ App ini berfungsi sebagai **media portofolio pribadi** sekaligus **blog manageme
    npm install
    npm run dev
    ```
-
-4. **Database Setup**
-   ```bash
-   # Buat database
-   mysql -u root -p -e "CREATE DATABASE myblog CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
-   
-   # Import schema
-   mysql -u root -p myblog < database/schema.sql
-   
-   # Import initial data
-   mysql -u root -p myblog < database/seed.sql
-   ```
-
-### Dengan Docker
-```bash
-# Jalankan semua service
-docker-compose up -d
-
-# Lihat logs
-docker-compose logs -f
-```
-
 ---
 
 ## 📄 Lisensi

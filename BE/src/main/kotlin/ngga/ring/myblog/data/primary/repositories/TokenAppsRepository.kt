@@ -7,4 +7,5 @@ import java.util.UUID
 
 interface TokenAppsRepository : JpaRepository<TokenAppsEntity, UUID> {
 
+   fun findByToken(token: String): java.util.Optional<TokenAppsEntity>
 }

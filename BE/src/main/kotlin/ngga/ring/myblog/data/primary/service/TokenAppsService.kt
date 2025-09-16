@@ -36,6 +36,11 @@ interface TokenAppsService {
     ): Any
 
     fun delete(id: String): Any
+
+    fun validateToken(token: String): Boolean
+
+    fun incrementUsage(token: String)
+
 }
 
 
@@ -139,5 +144,27 @@ class TokenAppsServiceImpl(
         } else {
             throw Exception("Data tidak ditemukan")
         }
+    }
+
+    override fun validateToken(token: String): Boolean {
+        val apiToken = tokenAppsRepository.findByToken(token)
+        return apiToken.map { isValid(it) }.orElse(false)
+    }
+
+    override fun incrementUsage(token: String) {
+        tokenAppsRepository.findByToken(token).ifPresent { apiToken ->
+            tokenAppsRepository.save(apiToken.copy(
+                usageCount = (apiToken.usageCount ?: 0) + 1,
+                updatedAt = LocalDateTime.now()
+            ))
+        }
+    }
+
+
+    private fun isValid(token: TokenAppsEntity): Boolean {
+        val now = LocalDateTime.now()
+        return token.isActive &&
+                (token.expiredAt.isAfter(now)) &&
+                (token.usageCount ?: 0) < (token.quota ?: 0)
     }
 }

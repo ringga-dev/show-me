@@ -1,0 +1,44 @@
+services:
+  app:
+    build: .
+    image: my-spring-app:latest
+    ports:
+      - "9091:9091"
+    volumes:
+      - "./data/uploads:/app/uploads"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "sh", "-c", "nc -z 127.0.0.1 9091"]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    # Jika pakai MySQL eksternal, cukup ini saja.
+    # Jika pakai MySQL di compose, tambahkan depends_on:
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
+
+  # ===== Aktifkan ini jika mau DB di Compose (opsi B) =====
+  # db:
+  #   image: mysql:8.0
+  #   command: --default-authentication-plugin=caching_sha2_password --lower_case_table_names=1
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root_password_yang_aman
+  #     MYSQL_DATABASE: my_blog_db
+  #     MYSQL_USER: app
+  #     MYSQL_PASSWORD: app_password
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"     # opsional, bisa dihapus agar hanya internal
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 10
+  #   restart: unless-stopped
+
+#volumes:
+#  app-data:
+#  # db-data:

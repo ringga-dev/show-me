@@ -3,10 +3,11 @@
 ```markdown
 # 📝 MyBlog App
 
-[![Backend: Kotlin](https://img.shields.io/badge/Backend-Kotlin-orange?logo=kotlin)](https://kotlinlang.org/)  
-[![Frontend: Nuxt 4](https://img.shields.io/badge/Frontend-Nuxt%204-green?logo=nuxt.js)](https://nuxt.com/)  
-[![Database: MySQL](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql)](https://www.mysql.com/)  
+[![Backend: Kotlin](https://img.shields.io/badge/Backend-Kotlin-orange?logo=kotlin)](https://kotlinlang.org/)
+[![Frontend: Nuxt 4](https://img.shields.io/badge/Frontend-Nuxt%204-green?logo=nuxt.js)](https://nuxt.com/)
+[![Database: MySQL](https://img.shields.io/badge/Database-MySQL-blue?logo=mysql)](https://www.mysql.com/)
 [![License: RSCAL](https://img.shields.io/badge/License-RSCAL%20v1.0-purple)](LICENSE)
+
 
 Aplikasi **Blog & Portfolio Management** dengan **Spring Boot Kotlin (backend)** dan **Nuxt 4 (frontend)**.  
 App ini berfungsi sebagai **media portofolio pribadi** sekaligus **blog management system** untuk artikel, project, dan aplikasi.
